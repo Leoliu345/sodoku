@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sodoku.Dao.leaderboardDao">
+    <resultMap type="cn.sodoku.Entity.Leaderboard" id="LeaderboardMap">
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="getLeaderboard" resultMap="LeaderboardMap">
+        select name,time
+        from leaderboard
+        where puzzleid = #{puzzleid}
+        order by time
+        limit 5
+    </select>
+
+
+</mapper>
